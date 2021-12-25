@@ -2,7 +2,7 @@
 A chrome extension to enrol in courses on CMS quickly
 ## Installing
 
-If you have git installed, run `git clone https://github.com/Akshat-Oke/meet-scheduler`
+If you have git installed, run `git clone https://github.com/Akshat-Oke/CMS-Extension.git`
 
 If you don't have git, download these files as ZIP (click `Code`(green button) and then "Download ZIP" in the dropdown above on this page), extract them into your desired folder and follow these steps:
 
