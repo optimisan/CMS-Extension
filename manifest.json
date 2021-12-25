@@ -1,0 +1,29 @@
+{
+  "name": "CMS Registration extension",
+  "description": "Register in courses on CMS with just one click!",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage"],
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["https://cms.bits-hyderabad.ac.in/course/*fromCMS=1*"],
+      "exclude_matches": ["*://*/*view.php*"],
+      "js": ["open_course.js"]
+    },
+    {
+      "matches": ["https://cms.bits-hyderabad.ac.in/course/*view.php*"],
+      "js": ["close_tab.js"]
+    },
+    {
+      "matches": ["https://cms.bits-hyderabad.ac.in/enrol/*"],
+      "js": ["enrol_in_course.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

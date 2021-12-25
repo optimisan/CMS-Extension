@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CMS Enrolment Extension</title>
+    <link rel="stylesheet" href="uikit/uikit.min.css" />
+    <style>
+      .red {
+        background-color: #ea1537;
+        color: white;
+      }
+      .green {
+        background-color: #0cb21d;
+        color: white;
+      }
+      body {
+        font-size: 100% !important;
+      }
+      .wrapper {
+        display: flex;
+      }
+      .wrapper > div:first-child {
+        border-right: 2px solid rgba(0, 0, 0, 0.3);
+        /* max-width: 600px; */
+      }
+      .wrapper > div:last-child {
+        padding-left: 35px;
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>The CMS Enrollment Extension</h1>
+    <p>
+      Enrol or unenrol from your courses on CMS in no time! Enter your course
+      codes below and have yourself enrolled in one click!
+    </p>
+    <div class="wrapper">
+      <div>
+        <form class="uk-container">
+          <fieldset class="uk-fieldset">
+            <legend class="uk-legend">Course Codes</legend>
+            <p>
+              Should be of the form <kbd>CODE Fxxx Section</kbd>, for example,
+              <kbd>CS F214 T1</kbd> Type one code on one line.
+            </p>
+            <div class="uk-margin">
+              <textarea
+                id="codes"
+                class="uk-textarea"
+                rows="5"
+                placeholder="CS F214 L1
+CS F222 T2"
+              ></textarea>
+            </div>
+            <button
+              id="enrol"
+              class="uk-button uk-button-primary"
+              type="button"
+            >
+              Enrol in these
+            </button>
+            <div>Leave it blank to unenrol from <i>all</i> courses</div>
+            <button
+              id="unenrol"
+              class="uk-button uk-button-danger"
+              type="button"
+            >
+              Unenrol from these
+            </button>
+          </fieldset>
+        </form>
+      </div>
+      <div>
+        <table class="uk-table uk-table-divider">
+          <caption>
+            Enrollment status
+          </caption>
+          <thead>
+            <tr>
+              <th>Course code</th>
+              <th>Section</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            <tr>
+              <td>Table Data</td>
+              <td>Table Data</td>
+            </tr>
+            <tr>
+              <td>Table Data</td>
+              <td>Table Data</td>
+              <td>Table Data</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="uikit/uikit.min.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
