@@ -21,6 +21,16 @@
     {
       "matches": ["https://cms.bits-hyderabad.ac.in/enrol/*"],
       "js": ["enrol_in_course.js"]
+    },
+    {
+      "matches": ["https://cms.bits-hyderabad.ac.in/my/"],
+      "js": ["unenrol.js"]
+    },
+    {
+      "matches": [
+        "https://cms.bits-hyderabad.ac.in/enrol/self/unenrolself.php*"
+      ],
+      "js": ["confirm_unenrol.js"]
     }
   ],
   "action": {
