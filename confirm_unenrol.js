@@ -1,5 +1,8 @@
 // chrome.storage.local TODO Mark this subject unenrolled in storage
-const subName = document.querySelectorAll("li.breadcrumb-item a")[1].innerText;
+let subName = document.querySelectorAll("li.breadcrumb-item a")[1].innerText;
+if (subName.trim() == "Courses") {
+  subName = document.getElementById("modal-content").getElementsByTagName("p")[0].innerText;
+}
 chrome.storage.local.get("subjects", (res) => {
   let found = false;
   let newSubjects = res.subjects;

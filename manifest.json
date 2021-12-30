@@ -1,7 +1,7 @@
 {
-  "name": "CMS Registration extension",
-  "description": "Register in courses on CMS with just one click!",
-  "version": "1.0",
+  "name": "CMS Enrollment extension",
+  "description": "Enroll in courses on CMS with just one click!",
+  "version": "0.1",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
