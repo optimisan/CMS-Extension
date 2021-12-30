@@ -1,4 +1,7 @@
 # CMS-Extension
+[![wakatime](https://wakatime.com/badge/user/3dac3ae8-38b0-466a-acd0-398b5b8cdc82/project/2adcd84d-b662-4908-977a-688cf738cbaa.svg)](https://wakatime.com/badge/user/3dac3ae8-38b0-466a-acd0-398b5b8cdc82/project/2adcd84d-b662-4908-977a-688cf738cbaa)
+
+
 A chrome extension to enrol in courses on CMS quickly
 ## Installing
 
