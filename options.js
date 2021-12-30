@@ -41,7 +41,7 @@ document.getElementById("enrol").addEventListener("click", () => {
 function getSubjectsFromTextbox() {
   const subjectCodes = document.getElementById("codes").value.toUpperCase().split("\n");
   const regex = /\w+ F\d{3}/g;
-  const sectionRegex = /[TLP]\d+/g;
+  const sectionRegex = /([TLP]\d+)|\bL\b/g;
   let allCodesAreValid = true;
   const subjects = subjectCodes.map(c => {
     const matches1 = c.match(regex);
