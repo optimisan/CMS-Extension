@@ -16,10 +16,11 @@
     },
     {
       "matches": ["https://cms.bits-hyderabad.ac.in/course/*view.php*"],
-      "js": ["close_tab.js"]
+      "js": ["util/close_tab.js", "util/log_recent.js"]
     },
     {
       "matches": ["https://cms.bits-hyderabad.ac.in/enrol/*"],
+      "exclude_matches": ["*://*/*unenrolself.php*"],
       "js": ["enrol_in_course.js"]
     },
     {
@@ -31,6 +32,11 @@
         "https://cms.bits-hyderabad.ac.in/enrol/self/unenrolself.php*"
       ],
       "js": ["confirm_unenrol.js"]
+    },
+    {
+      "matches": ["https://cms.bits-hyderabad.ac.in/mod/forum/discuss.php*"],
+      "js": ["util/arrow_nav.js"],
+      "css": ["util/arrow.css"]
     }
   ],
   "action": {

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CMS Enrolment Extension</title>
     <link rel="stylesheet" href="uikit/uikit.min.css" />
+
     <style>
       .red {
         background-color: #ea1537;
@@ -33,78 +34,157 @@
         padding-left: 35px;
         flex-grow: 1;
       }
+      /* .home {
+        display: flex;
+      }
+      .home > div:first-child {
+        margin-left: 10px;
+        border-right: 2px solid rgba(0, 0, 0, 0.3);
+      } */
+      .img-flex {
+        display: flex;
+      }
+      .img-flex img {
+        display: block;
+        width: 200px;
+      }
+      header {
+        margin: 0 20px;
+      }
     </style>
   </head>
 
   <body>
-    <h1>The CMS Enrollment Extension</h1>
-    <p>
-      Enrol or unenrol from your courses on CMS in no time! Enter your course
-      codes below and have yourself enrolled in one click!
-    </p>
-    <div class="wrapper">
-      <div>
-        <form class="uk-container">
-          <fieldset class="uk-fieldset">
-            <legend class="uk-legend">Course Codes</legend>
-            <p>
-              Should be of the form <kbd>CODE Fxxx Section</kbd>, for example,
-              <kbd>CS F214 T1</kbd> Type one code on one line.
-            </p>
-            <div class="uk-margin">
-              <textarea
-                id="codes"
-                class="uk-textarea"
-                rows="5"
-                placeholder="CS F214 L1
-CS F222 T2"
-              ></textarea>
-            </div>
-            <button
-              id="enrol"
-              class="uk-button uk-button-primary"
-              type="button"
-            >
-              Enrol in these
-            </button>
-            <div>Leave it blank to unenrol from <i>all</i> courses</div>
-            <button
-              id="unenrol"
-              class="uk-button uk-button-danger"
-              type="button"
-            >
-              Unenrol from these
-            </button>
-          </fieldset>
-        </form>
+    <header>
+      <h1>The CMS Enrollment Extension</h1>
+      <div class="uk-alert" uk-alert>
+        Enrol or unenrol from your courses on CMS in no time! Enter your course
+        codes below and have yourself enrolled in one click!
       </div>
-      <div>
-        <table class="uk-table uk-table-divider">
-          <caption>
-            Enrollment status
-          </caption>
-          <thead>
-            <tr>
-              <th>Course code</th>
-              <th>Section</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="tbody">
-            <tr>
-              <td>Table Data</td>
-              <td>Table Data</td>
-            </tr>
-            <tr>
-              <td>Table Data</td>
-              <td>Table Data</td>
-              <td>Table Data</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <p>
+          Ensure you are logged in on CMS before enrolling/unenrolling from
+          courses
+        </p>
+      </div>
+      <div class="uk-alert-success" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        Recommended: Pin the extension icon for easy access
+      </div>
+    </header>
+    <section class="home">
+      <!-- <div>
+        <ul class="uk-tab-right" uk-tab>
+          <li class="uk-active"><a href="#">Right</a></li>
+          <li><a href="#">Item</a></li>
+          <li><a href="#">Item</a></li>
+        </ul>
+      </div> -->
+      <div class="wrapper">
+        <div>
+          <form class="uk-container">
+            <fieldset class="uk-fieldset">
+              <legend class="uk-legend">Course Codes</legend>
+              <p>
+                Should be of the form <kbd>CODE Fxxx Section</kbd>, for example,
+                <kbd>CS F214 T1</kbd> Type one code on one line.
+              </p>
+              <div class="uk-margin">
+                <textarea
+                  id="codes"
+                  class="uk-textarea"
+                  rows="5"
+                  placeholder="CS F214 L1
+CS F222 T2"
+                ></textarea>
+              </div>
+              <button
+                id="enrol"
+                class="uk-button uk-button-primary"
+                type="button"
+              >
+                Enrol in these
+              </button>
+              <div>Leave it blank to unenrol from <i>all</i> courses</div>
+              <button
+                id="unenrol"
+                class="uk-button uk-button-danger"
+                type="button"
+              >
+                Unenrol from these
+              </button>
+            </fieldset>
+          </form>
+        </div>
+        <div>
+          <table class="uk-table uk-table-divider">
+            <caption>
+              Enrollment status
+            </caption>
+            <thead>
+              <tr>
+                <th>Course code</th>
+                <th>Section</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+              <tr>
+                <td>Table Data</td>
+                <td>Table Data</td>
+              </tr>
+              <tr>
+                <td>Table Data</td>
+                <td>Table Data</td>
+                <td>Table Data</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <article class="uk-article" style="margin: 10px 40px">
+      <hr class="uk-divider-icon" />
+      <h2 class="uk-article-title">
+        <a class="uk-link-reset" href="">About</a>
+      </h2>
+
+      <p class="uk-article-meta">
+        This extension supercharges your CMS experience
+      </p>
+
+      <p class="uk-text-lead">Enrol/Unenrol</p>
+
+      <p>
+        Enter your course codes in the textbox above (separated by new lines)
+        and click on the blue/red buttons to enrol or unenrol from those
+        courses.
+      </p>
+
+      <p class="uk-text-lead">Navigate between announcements with ease</p>
+      <p>
+        In the announcements section (on viewing an announcements) go to the
+        next or previous announcements by using your arrow keys: RIGHT or LEFT
+      </p>
+      <p class="uk-text-lead">Quickly get back to CMS</p>
+      <div class="img-flex">
+        <p>
+          Click the extension icon (or on the extension name in the list of
+          extensions (puzzle icon in chrome)) to view your recently openend
+          courses and quickly open them back by clicking on them.
+        </p>
+        <!-- <img src="extension-list.png" alt="Extension list image" /> -->
+      </div>
+    </article>
+    <!-- This is the modal -->
+    <div id="modal" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">Welcome to the CMS extension</h2>
+        <p></p>
+        <button class="uk-modal-close" type="button"></button>
       </div>
     </div>
-
     <script src="uikit/uikit.min.js"></script>
     <script src="options.js"></script>
   </body>

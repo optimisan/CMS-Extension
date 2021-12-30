@@ -4,13 +4,17 @@ chrome.storage.local.get(["subjects", "unenrol"], (res) => {
   newSubjects.forEach(s => {
     if (title.includes(s.code) && title.includes(s.section)) {
       if (res.unenrol) {
-        s.unenrolled = true;
+        // s.unenrolled = true;
       }
-      else
-        chrome.runtime.sendMessage({ closeThis: true });
+      else {
+        s.error = "Already enrolled"
+        chrome.storage.local.set({ subjects: newSubjects }, (e) => {
+          chrome.runtime.sendMessage({ closeThis: true });
+        });
+      }
     }
   });
-  chrome.storage.local.get({ subjects: newSubjects }, (e) => { });
+  chrome.storage.local.set({ subjects: newSubjects }, (e) => { });
   if (res.unenrol) unenrol();
 })
 function unenrol() {

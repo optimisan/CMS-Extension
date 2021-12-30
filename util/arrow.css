@@ -1,0 +1,15 @@
+div.cms-arrow {
+  z-index: 99999;
+  color: white;
+  background-color: #2d2d2de6;
+  padding: 20px 15px;
+  max-width: max-content;
+  width: min-content;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 300px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 5px;
+}

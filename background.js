@@ -12,6 +12,7 @@ chrome.runtime.onInstalled.addListener((details) => {
 });
 // Get the message from Options page to enrol
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  console.log(sender.tab);
   // Background script
   if (message.closeThis) chrome.tabs.remove(sender.tab.id);
 
@@ -39,11 +40,11 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
       let allUnenrolled = true;
       // or all enrolled
       newValue.forEach(s => {
-        allUnenrolled = s.unenrolled || s.enrolled;
+        allUnenrolled = s.unenrolled || s.enrolled || s.error;
       });
       if (allUnenrolled) {
-        chrome.storage.local.set({ unenrol: true }, (e) => { });
-        chrome.storage.local.remove("subjects");
+        chrome.storage.local.set({ unenrol: false }, (e) => { });
+        // chrome.storage.local.remove("subjects");
       }
     }
   }
