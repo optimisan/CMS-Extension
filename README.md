@@ -25,6 +25,7 @@ Tired of clicking through three pages just to unenroll from one course, and doin
 Wish you had something that would complete these tasks efficiently?
 
 This CMS enrollment extension is the answer to your questions.
+
 Bonus: Navigate quickly between course announcements with arrow keys, view your recently accessed courses and get back to them faster.
 
 Install now and spend more time on the content on the courses, not searching for them.
