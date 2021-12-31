@@ -1,5 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const fromCMSExtension = urlParams.get('fromCMS');
+const searchStr = urlParams.get("q")
 console.log("Asdasd");
 if (fromCMSExtension) {
   console.log("Let's go!");
@@ -30,7 +31,24 @@ if (fromCMSExtension) {
       chrome.runtime.sendMessage({ closeThis: true });
     })
   } else {
-    const link = results.children[0].getElementsByTagName("a")[0].getAttribute("href");
-    window.location.href = link + "&fromCMS=1";
+    const subNameInSearch = results.children[0].getElementsByTagName("a")[0].innerText;
+    let [whole, subjectCode, code] = [...searchStr.matchAll(/(\w+)\s*(F\d{3})/ig)][0];
+    if ((new RegExp(`\\b${subjectCode}\\b`)).test(subNameInSearch)) {
+      const link = results.children[0].getElementsByTagName("a")[0].getAttribute("href");
+      window.location.href = link + "&fromCMS=1";
+    } else {
+      chrome.storage.local.get("subjects", res => {
+        const newSubjects = res.subjects;
+        for (let i = 0; i < newSubjects.length; i++) {
+          const s = newSubjects[i];
+          if (s.code == `${subjectCode} ${code}`) {
+            s.error = "Course not found";
+            break;
+          }
+        }
+        chrome.storage.local.set({ subjects: newSubjects });
+        chrome.runtime.sendMessage({ closeThis: true });
+      })
+    }
   }
 }
