@@ -7,9 +7,10 @@ chrome.storage.local.get(["subjects", "unenrol"], (res) => {
         // s.unenrolled = true;
       }
       else {
+        if (s.error || s.enrolled) return;
         s.error = "Already enrolled"
         chrome.storage.local.set({ subjects: newSubjects }, (e) => {
-          chrome.runtime.sendMessage({ closeThis: true });
+          // chrome.runtime.sendMessage({ closeThis: true });
         });
       }
     }

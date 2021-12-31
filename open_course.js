@@ -46,8 +46,9 @@ if (fromCMSExtension) {
             break;
           }
         }
-        chrome.storage.local.set({ subjects: newSubjects });
-        chrome.runtime.sendMessage({ closeThis: true });
+        chrome.storage.local.set({ subjects: newSubjects }, e => {
+          chrome.runtime.sendMessage({ closeThis: true });
+        });
       })
     }
   }
