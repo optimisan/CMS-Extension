@@ -1,10 +1,16 @@
 # CMS-Extension
 
-[![wakatime](https://wakatime.com/badge/user/3dac3ae8-38b0-466a-acd0-398b5b8cdc82/project/2adcd84d-b662-4908-977a-688cf738cbaa.svg)](https://wakatime.com/badge/user/3dac3ae8-38b0-466a-acd0-398b5b8cdc82/project/2adcd84d-b662-4908-977a-688cf738cbaa)
+[![wakatime](https://wakatime.com/badge/user/3dac3ae8-38b0-466a-acd0-398b5b8cdc82/project/2adcd84d-b662-4908-977a-688cf738cbaa.svg)](https://wakatime.com/badge/user/3dac3ae8-38b0-466a-acd0-398b5b8cdc82/project/2adcd84d-b662-4908-977a-688cf738cbaa) (Add 4.5 hours to this) = Total time spent developing this
 
-A chrome extension to enrol in courses on CMS quickly
+A chrome extension to enrol in courses on CMS quickly.
 
 ## Installing
+
+Easy way: Install it from [Chrome Web Store](https://chrome.google.com/webstore/detail/meetimely/aenhmmfelkmdlihmaiblnhdmfopmbonc?hl=en-GB&authuser=0)
+
+----
+
+If you are skeptical about whether the same code is on the Chrome Web Store you can follow the below steps instead:
 
 If you have git installed, run `git clone https://github.com/Akshat-Oke/CMS-Extension.git`
 
