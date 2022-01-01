@@ -6,7 +6,7 @@ A chrome extension to enrol in courses on CMS quickly.
 
 ## Installing
 
-Easy way: Install it from [Chrome Web Store](https://chrome.google.com/webstore/detail/cms-enrollment-extension/ebjldebpahljhpakgngnandakdbajdnj?hl=en-GB)
+Easy way: Install it from [Chrome Web Store](https://chrome.google.com/webstore/detail/cms-enrollment-extension/ebjldebpahljhpakgngnandakdbajdnj?hl=en-GB) Do install from here, I paid $5 just to put it there :)
 
 ----
 
