@@ -1,7 +1,7 @@
 {
   "name": "CMS Enrollment extension",
   "description": "Enroll in courses on CMS with just one click!",
-  "version": "0.2",
+  "version": "0.2.2",
   "manifest_version": 3,
   "icons": {
     "16": "icons/16.png",

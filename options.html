@@ -111,10 +111,24 @@ CS F222 T2"
                 id="unenrol"
                 class="uk-button uk-button-danger"
                 type="button"
+                style="/*display: none*/"
               >
+                <!-- invisible but exists because of js event listener error -->
                 Unenrol from these
               </button>
+              <button
+                id="unenrol-all"
+                class="uk-button uk-button-danger"
+                type="button"
+                style="display: none"
+              >
+                Unenrol from all courses
+              </button>
             </fieldset>
+            <div class="uk-alert-warning" uk-alert>
+              <a class="uk-alert-close" uk-close></a>
+              <p>Only 3 courses are allowed to be worked on at a time.</p>
+            </div>
           </form>
         </div>
         <div>
@@ -140,7 +154,7 @@ CS F222 T2"
         </div>
       </div>
     </section>
-    <article class="uk-article" style="margin: 10px 40px">
+    <article class="uk-article" style="margin: 10px 40px" id="about">
       <hr class="uk-divider-icon" />
       <h2 class="uk-article-title">
         <a class="uk-link-reset" href="">About</a>

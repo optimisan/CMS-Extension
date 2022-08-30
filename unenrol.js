@@ -1,10 +1,25 @@
-chrome.storage.local.get(["unenrol", "subjects"], (res) => {
+chrome.storage.local.get(["unenrol", "subjects", "unenrol_all"], (res) => {
   console.log(res);
-  if (res.unenrol && (document.querySelectorAll(".alert, .alert-success").length == 0)) {
-    goToUnenrol(res.subjects);
+  if (res.unenrol) {
+    if (res.unenrol_all) {
+      unenrollAll();
+    }
+    if (res.unenrol && (document.querySelectorAll(".alert, .alert-success").length == 0)) {
+      goToUnenrol(res.subjects);
+    }
   }
   // goToUnenrol(res.subjects);
 })
+function unenrollAll() {
+  chrome.storage.local.set({ unenrol_all: false }, () => {
+    const links = Array.from(document.querySelector("ul.unlist").getElementsByTagName("li"));
+    links.forEach(li => {
+      const a = li.getElementsByTagName("a")[0];//.getAttribute("title");
+      a.setAttribute("target", "_blank");
+      a.click();
+    })
+  });
+}
 function goToUnenrol(subjects) {
   const origSubjects = [...subjects];
   const links = Array.from(document.querySelector("ul.unlist").getElementsByTagName("li"));

@@ -19,6 +19,7 @@ chrome.storage.local.get(['subjects', "unenrol"], function (result) {
       else {
         subject.enrolled = false;
         subject.error = "Already enrolled";
+        chrome.runtime.sendMessage({ closeThis: true })
       }
       break;
     }

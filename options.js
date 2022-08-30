@@ -1,28 +1,16 @@
 window.onload = () => {
   tableFromStorage();
+  chrome.storage.local.get("openedOnce", ({ openedOnce }) => {
+    if (!openedOnce) {
+      document.getElementById("about").scrollIntoView();
+      chrome.storage.local.set({ openedOnce: true });
+    }
+  })
 }
-document.getElementById("enrol").addEventListener("click", () => {
+function enrolInCourses() {
   trimInputs();
   const [subjects, allCodesAreValid] = getSubjectsFromTextbox();
   const subjectCodes = document.getElementById("codes").value.toUpperCase().split("\n");
-  // const regex = /\w+ F\d{3}/g;
-  // const sectionRegex = /[TLP]\d+/g;
-  // let allCodesAreValid = true;
-  // const subjects = subjectCodes.map(c => {
-  //   const matches1 = c.match(regex);
-  //   if (matches1 && matches1.length == 1) {
-  //     const matches2 = c.match(sectionRegex);
-  //     if (matches2 && matches2.length == 1) {
-  //       return { subject: c, code: matches1[0], section: matches2[0], enrolled: false, isValid: true };
-  //     } else {
-  //       allCodesAreValid = false;
-  //       return { subject: c, code: matches1[0], isValid: false };
-  //     }
-  //   } else {
-  //     allCodesAreValid = false;
-  //     return { subject: c, code: c, enrolled: false, isValid: false };
-  //   }
-  // });
   createTable(subjects);
   if (!allCodesAreValid) UIkit.notification('Course code number is required', "danger");
   else {
@@ -37,9 +25,27 @@ document.getElementById("enrol").addEventListener("click", () => {
       });
     })
   }
+}
+document.getElementById("enrol").addEventListener("click", enrolInCourses);
+
+document.getElementById("unenrol-all").addEventListener("click", (e) => {
+  UIkit.modal.confirm("Do you want to unenrol from all courses? This action cannot be interrupted or reverted.").then(function () {
+    chrome.storage.local.set({ subjects: null, unenrol: true, unenrol_all: true });
+    chrome.tabs.create({ url: "https://cms.bits-hyderabad.ac.in/my/" });
+  })
 })
 function getSubjectsFromTextbox() {
   const subjectCodes = document.getElementById("codes").value.toUpperCase().split("\n");
+  //take first 3 elements only
+  if (subjectCodes.length > 3) {
+    const remaining = subjectCodes.splice(3);
+    subjectCodes.length = 3;
+    //replace "codes" textbox with remaining elements
+    document.getElementById("codes").value = remaining.join("\n");
+    // document.getElementById("codes").value = subjectCodes.join("\n");
+    // subjectCodes.length = 3;
+    UIkit.notification('Only 3 courses can be worked with at once. Click "Enrol" once these are done.', "danger");
+  }
   const regex = /\w+ F\d{3}/g;
   const sectionRegex = /([TLP]\d+)|\bL\b/g;
   let allCodesAreValid = true;
@@ -100,18 +106,38 @@ function createTable(subjects) {
 }
 function tableFromStorage() {
   chrome.storage.local.get('subjects', (res) => {
-    let html = "";
-    res.subjects.forEach(s => {
-      html += `
+    showTableFromSubjects(res.subjects);
+  })
+}
+chrome.storage.onChanged.addListener((a, b) => {
+  tableFromStorage();
+  const subjectCodes = document.getElementById("codes").value;
+  // if (subjectCodes.trim() !== "") {
+  //   showTableFromSubjects(a.subjects.newValue, true);
+  //   enrolInCourses();
+  // } else
+  // showTableFromSubjects(a.subjects.newValue);
+})
+function processRemainingSubjects() {
+  const subjectCodes = document.getElementById("codes").value;
+  if (subjectCodes.trim() !== "") {
+    enrolInCourses();
+    return true;
+  }
+  return false;
+}
+function showTableFromSubjects(subjects, append = false) {
+  let html = "";
+  subjects.forEach(s => {
+    html += `
     <tr class="${s.enrolled ? 'green' : s.error ? 'red' : s.unenrolled ? 'black' : ''}">
       <td>${s.code}</td>
       <td>${s.section}</td>
       <td>${s.enrolled ? 'Enrolled' : (s.error ? s.error : s.unenrolled ? 'Unenrolled' : 'Loading')}</td>
     </tr>`;
-    })
-    document.getElementById("tbody").innerHTML = html;
   })
+  if (append) {
+    document.getElementById("tbody").innerHTML += html;
+  } else
+    document.getElementById("tbody").innerHTML = html;
 }
-chrome.storage.onChanged.addListener((a, b) => {
-  tableFromStorage();
-})
