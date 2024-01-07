@@ -49,3 +49,55 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
     }
   }
 });
+// Get CMS details from webpage
+
+// Listen to message from chronofactorem
+chrome.runtime.onConnectExternal.addListener(function (port) {
+  console.log("Connected...")
+  port.onMessage.addListener(async function (msg) {
+    if (!msg.getCMSDetails) {
+      port.disconnect();
+      return;
+    }
+
+    try {
+      const cmsDetails = await getCMSDetails();
+      console.log(cmsDetails)
+      port.postMessage(cmsDetails);
+      port.disconnect();
+    } catch (error) {
+      console.error(error);
+      port.postMessage({ error });
+      port.disconnect();
+    }
+
+  })
+})
+
+async function getCMSDetails() {
+  // Web Service Token
+  // Open a new tab and get the token
+  const tab = await chrome.tabs.create({
+    url: "https://cms.bits-hyderabad.ac.in/user/managetoken.php?fromCMS=1",
+    active: false,
+  });
+  // wait till the above tab is loaded
+  await new Promise((resolve, reject) => {
+    chrome.tabs.onUpdated.addListener(function listener(tabId, changeInfo) {
+      if (tabId === tab.id && changeInfo.status === "complete") {
+        chrome.tabs.onUpdated.removeListener(listener);
+        resolve();
+      }
+    });
+  });
+  const details = await chrome.tabs.sendMessage(tab.id, { getCMSDetails: true });
+  return new Promise((resolve, reject) => {
+    chrome.cookies.get({ url: "https://cms.bits-hyderabad.ac.in", name: "MoodleSession" }, function (cookie) {
+      if (cookie) {
+        resolve({ ...details, cookie: cookie.value });
+      } else {
+        reject("Cookie not found");
+      }
+    });
+  });
+}

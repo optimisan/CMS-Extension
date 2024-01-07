@@ -11,39 +11,87 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["storage"],
+  "host_permissions": [
+    "*://cms.bits-hyderabad.ac.in/*"
+  ],
+  "permissions": [
+    "storage",
+    "cookies"
+  ],
   "options_page": "options.html",
   "content_scripts": [
     {
-      "matches": ["https://cms.bits-hyderabad.ac.in/course/*fromCMS=1*"],
-      "exclude_matches": ["*://*/*view.php*"],
-      "js": ["open_course.js"]
+      "matches": [
+        "https://cms.bits-hyderabad.ac.in/course/*fromCMS=1*"
+      ],
+      "exclude_matches": [
+        "*://*/*view.php*"
+      ],
+      "js": [
+        "open_course.js"
+      ]
     },
     {
-      "matches": ["https://cms.bits-hyderabad.ac.in/course/*view.php*"],
-      "js": ["util/close_tab.js", "util/log_recent.js"]
+      "matches": [
+        "https://cms.bits-hyderabad.ac.in/course/*view.php*"
+      ],
+      "js": [
+        "util/close_tab.js",
+        "util/log_recent.js"
+      ]
     },
     {
-      "matches": ["https://cms.bits-hyderabad.ac.in/enrol/*"],
-      "exclude_matches": ["*://*/*unenrolself.php*"],
-      "js": ["enrol_in_course.js"]
+      "matches": [
+        "https://cms.bits-hyderabad.ac.in/enrol/*"
+      ],
+      "exclude_matches": [
+        "*://*/*unenrolself.php*"
+      ],
+      "js": [
+        "enrol_in_course.js"
+      ]
     },
     {
-      "matches": ["https://cms.bits-hyderabad.ac.in/my/"],
-      "js": ["unenrol.js"]
+      "matches": [
+        "https://cms.bits-hyderabad.ac.in/my/"
+      ],
+      "js": [
+        "unenrol.js"
+      ]
     },
     {
       "matches": [
         "https://cms.bits-hyderabad.ac.in/enrol/self/unenrolself.php*"
       ],
-      "js": ["confirm_unenrol.js"]
+      "js": [
+        "confirm_unenrol.js"
+      ]
     },
     {
-      "matches": ["https://cms.bits-hyderabad.ac.in/mod/forum/discuss.php*"],
-      "js": ["util/arrow_nav.js"],
-      "css": ["util/arrow.css"]
+      "matches": [
+        "https://cms.bits-hyderabad.ac.in/user/managetoken.php*"
+      ],
+      "js": [
+        "chrono.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://cms.bits-hyderabad.ac.in/mod/forum/discuss.php*"
+      ],
+      "js": [
+        "util/arrow_nav.js"
+      ],
+      "css": [
+        "util/arrow.css"
+      ]
     }
   ],
+  "externally_connectable": {
+    "matches": [
+      "https://*.chrono.crux-bphc.com/*"
+    ]
+  },
   "action": {
     "default_popup": "popup.html"
   }
