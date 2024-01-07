@@ -2,7 +2,6 @@
 
 [![users](https://img.shields.io/badge/max%20users-197-orange)](https://chrome.google.com/webstore/detail/cms-enrollment-extension/ebjldebpahljhpakgngnandakdbajdnj?hl=en-GB) [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/ebjldebpahljhpakgngnandakdbajdnj?color=orange&label=current%20users)](https://chrome.google.com/webstore/detail/cms-enrollment-extension/ebjldebpahljhpakgngnandakdbajdnj?hl=en-GB)
 
-[![wakatime](https://wakatime.com/badge/user/3dac3ae8-38b0-466a-acd0-398b5b8cdc82/project/2adcd84d-b662-4908-977a-688cf738cbaa.svg)](https://wakatime.com/badge/user/3dac3ae8-38b0-466a-acd0-398b5b8cdc82/project/2adcd84d-b662-4908-977a-688cf738cbaa) (Add 4.5 hours to this) = Total time spent developing this
 
 A chrome extension to enrol in courses on CMS quickly.
 
